@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useState, useEffect } from "react";
 import Skill from "./Skills";
 import { SkillObject } from "../../pages/profile";
 import Industry from "./Industries";
@@ -39,10 +39,10 @@ const Experience: FunctionComponent<Props> = (props) => {
 
 
 
-    const [hideLevel, setHideLevel] = React.useState(false);
-    const [hideSkills, setHideSkills] = React.useState(false);
-    const [hideEdit, setHideEdit] = React.useState(false);
-    const [hideIndustries, setHideIndustries] = React.useState(false);
+    const [hideLevel, setHideLevel] = useState(false);
+    const [hideSkills, setHideSkills] = useState(false);
+    const [hideEdit, setHideEdit] = useState(false);
+    const [hideIndustries, setHideIndustries] = useState(false);
 
     const editClick = () => {
         setHideLevel(true);

@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useState, useEffect } from "react";
 import Button from "./Button";
 
 interface Props {
@@ -12,11 +12,11 @@ interface Props {
 const BasicInformation: FunctionComponent<Props> = (props) => {
 
     //dynamic editing of fields here
-    const [hideFirstName, setHideFirstName] = React.useState(false);
-    const [hideLastName, setHideLastName] = React.useState(false);
-    const [hideEmail, setHideEmail] = React.useState(false);
-    const [hideContact, setHideContact] = React.useState(false);
-    const [hideEdit, setHideEdit] = React.useState(false);
+    const [hideFirstName, setHideFirstName] = useState(false);
+    const [hideLastName, setHideLastName] = useState(false);
+    const [hideEmail, setHideEmail] = useState(false);
+    const [hideContact, setHideContact] = useState(false);
+    const [hideEdit, setHideEdit] = useState(false);
 
     const editClick = () => {
         setHideFirstName(true);

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import BasicInformation from "../../components/profile/BasicInformation";
 import Experience from "../../components/profile/Experience";
-import Navbar from '../../components/shared/Navbar'
+import Navbar from "../../components/shared/Navbar";
+import profileBgMobile from "../../public/assets/images/profile/background-profile-mobile.jpg";
 
 export type SkillObject = {
     skillName: string;
@@ -43,13 +44,19 @@ let currentUser: Profile = {
 }
 
 const UserProfile = () => {
+
     return (
         <>
-            <Navbar/>
-            <div className="profileBanner py-10 bg-black bg-no-repeat bg-cover bg-blend-screen flex flex-col md:flex-row md:py-5" style={{
-                backgroundImage: "url(/assets/images/Profile/background-profile-tablet.png)",
-            }}>
-                <div className="profileImage h-23 w-32 max-w-[250px] md:h-auto mx-auto md:order-last md:basis-1/4 md:my-auto md:py-5 md:mr-24 lg:mr-32">
+            <Navbar />
+            <div className="profileBanner py-10 bg-black bg-no-repeat bg-cover bg-blend-screen flex flex-col md:flex-row md:py-5 relative" >
+                <Image
+                    className="profileBGImage"
+                    src={profileBgMobile}
+                    alt="profile background"
+                    layout="fill"
+                    objectFit="cover"
+                />
+                <div className="profileImage h-23 w-32 max-w-[200px] md:h-auto mx-auto md:order-last md:basis-1/4 md:my-auto md:py-5 md:mr-24 lg:mr-32">
                     <Image
                         className="rounded-full"
                         src={currentUser.image}
@@ -57,10 +64,11 @@ const UserProfile = () => {
                         width={100}
                         height={100}
                         layout="responsive"
+                        priority={true}
                     />
                 </div>
                 <div className="profileNameContainer flex flex-col md:flex-row md:ml-24 md:py-5 md:basis-3/4 lg:ml-32">
-                    <div className="profileName text-5xl font-bold text-center text-white md:flex md:text-7xl"><span className="md:self-center">{currentUser.firstName}</span></div>
+                    <div className="profileName text-5xl font-bold text-center text-white md:flex md:text-7xl z-50"><span className="md:self-center">{currentUser.firstName}</span></div>
                     <div className="profileName text-2xl font-bold text-center text-white translate-y-[10%] md:flex md:ml-3 md:text-3xl"><span className="shadow-black md:self-center">{currentUser.lastName}</span></div>
                 </div>
             </div>
